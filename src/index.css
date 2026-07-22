@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-royale: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  
+  --color-background: var(--bg);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+}
+
+@layer base {
+  :root {
+    --bg: #FAF8F5; /* Soft Ivory Linen */
+    --surface: #FFFFFF; /* Pure White */
+    --primary: #0A0F24; /* Deep Royal Navy */
+    --accent: #B8860B; /* Warm Gold */
+  }
+
+  .dark {
+    --bg: #0A0F24; /* Deep Midnight Navy */
+    --surface: #131B38; /* Dark Navy */
+    --primary: #F8F9FA; /* Crisp Off-White */
+    --accent: #B8860B; /* Brushed Gold */
+  }
+
+  @media (pointer: fine) {
+    body, a, button, input, textarea, select {
+      cursor: none !important;
+    }
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--primary);
+    transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-royale);
+    color: var(--primary);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .glass-pill {
+    @apply bg-surface/80 backdrop-blur-xl shadow-lg border border-primary/5 dark:border-white/10;
+  }
+  
+  .text-outline {
+    -webkit-text-stroke: 1px var(--primary);
+    color: transparent;
+  }
+
+  .bg-rhombus-net {
+    background-image: 
+      linear-gradient(60deg, transparent 49%, rgba(0, 0, 0, 0.08) 49%, rgba(0, 0, 0, 0.08) 51%, transparent 51%),
+      linear-gradient(-60deg, transparent 49%, rgba(0, 0, 0, 0.08) 49%, rgba(0, 0, 0, 0.08) 51%, transparent 51%);
+    background-size: 40px 69px; /* Proportional for 60deg diamond */
+  }
+  
+  .dark .bg-rhombus-net {
+    background-image: 
+      linear-gradient(60deg, transparent 49%, rgba(192, 192, 192, 0.1) 49%, rgba(192, 192, 192, 0.1) 51%, transparent 51%),
+      linear-gradient(-60deg, transparent 49%, rgba(192, 192, 192, 0.1) 49%, rgba(192, 192, 192, 0.1) 51%, transparent 51%);
+  }
+}
